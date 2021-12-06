@@ -1,6 +1,7 @@
 package homeWork3;
 
 import java.util.Arrays;
+import java.util.Collections;
 
 public class HomeWork3 {
     public static void main(String[] args) {
@@ -8,7 +9,11 @@ public class HomeWork3 {
 //        task1();
 //        task2();
 //        task3();
-            task4();
+//        task4();
+//        System.out.println(Arrays.toString(task5(10,9)));
+//        findMinAndMax();
+        int[] arr = {2, 2, 2, 1, 2, 2, 10, 1};
+        task7(arr);
     }
 
     public static void task1() {
@@ -28,9 +33,9 @@ public class HomeWork3 {
     }
 
     private static void task3() {
-        int[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        int[] arr = {1, 5, 3, 2, 11, 4, 9, 5, 2, 4, 8, 1};
         for (int i = 0; i < arr.length; i++) {
-            if(arr[i] < 6){
+            if (arr[i] < 6) {
                 arr[i] *= 2;
             }
         }
@@ -47,5 +52,21 @@ public class HomeWork3 {
             System.out.println(Arrays.toString(ints));
             System.out.println();
         }
+    }
+
+    private static int[] task5(int length, int value) {
+        int[] arr = new int[length];
+        Arrays.fill(arr, value);
+        return arr;
+    }
+
+    private static void findMinAndMax() {
+        Integer[] arr = {1, 5, 3, 2, 11, 4, 5, 2, 4, 8, 9, 1};
+        int min = Collections.min(Arrays.asList(arr));
+        int max = Collections.max(Arrays.asList(arr));
+        System.out.printf("Min value in array %s%nMax value in array %s%n", min, max);
+    }
+
+    private static void task7(int[] arr) {
     }
 }
