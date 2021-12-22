@@ -3,12 +3,32 @@ import java.util.Random;
 public class Cat {
     private String name;
     private int satiety;
-    private boolean ifSatiety;
+    private int maxSatiety;
     private int countOfFood;
 
-    public Cat(String name, int satiety) {
+    public Cat(String name, int maxSatiety) {
         this.name = name;
-        this.satiety = satiety;
+        this.maxSatiety = maxSatiety;
+        this.satiety = 0;
+    }
+
+    public void eat(Plate plate) {
+        countOfFood = new Random().nextInt(3) + 1;
+        if(maxSatiety == satiety){
+            System.out.println("Кот " + name +" наелся");
+            return;
+        }
+        if(maxSatiety - countOfFood < 0){
+            countOfFood = maxSatiety - countOfFood;
+        }
+        if (plate.decreaseFood(countOfFood)) {
+            satiety += countOfFood;
+        }
+
+    }
+
+    public void printInfo() {
+        System.out.printf("Кот %s наелся на %s из %s%n", name, satiety, maxSatiety);
     }
 
     public String getName() {
@@ -19,7 +39,7 @@ public class Cat {
         this.name = name;
     }
 
-    public int isSatiety() {
+    public int getSatiety() {
         return satiety;
     }
 
@@ -27,12 +47,20 @@ public class Cat {
         this.satiety = satiety;
     }
 
-    public void eat(Plate plate) {
-        countOfFood = new Random().nextInt(4) + 1;
-        if (plate.decreaseFood(countOfFood)) {
+    public int getMaxSatiety() {
+        return maxSatiety;
+    }
 
-        }
+    public void setMaxSatiety(int maxSatiety) {
+        this.maxSatiety = maxSatiety;
+    }
 
+    public int getCountOfFood() {
+        return countOfFood;
+    }
+
+    public void setCountOfFood(int countOfFood) {
+        this.countOfFood = countOfFood;
     }
 
     @Override
@@ -40,6 +68,8 @@ public class Cat {
         return "Cat{" +
                 "name='" + name + '\'' +
                 ", satiety=" + satiety +
+                ", maxSatiety=" + maxSatiety +
+                ", countOfFood=" + countOfFood +
                 '}';
     }
 }
